@@ -1,7 +1,7 @@
-insert into produto (id, nome, versao, preco, data_criacao, ativo, descricao) values (1, 0, 'Kindle', 799.0, (SELECT current_date - INTERVAL '1 day'), 'SIM', 'Conheça o novo Kindle, agora com iluminação embutida ajustável, que permite que você leia em ambientes abertos ou fechados, a qualquer hora do dia.');
-insert into produto (id, nome, versao, preco, data_criacao, ativo, descricao) values (3, 0, 'Câmera GoPro Hero 7', 1400.0, (SELECT current_date - INTERVAL '1 day'), 'SIM', 'Desempenho 2x melhor.');
-insert into produto (id, nome, versao, preco, data_criacao, ativo, descricao) values (4, 0, 'Câmera Canon 80D', 3500.0, current_date, 'SIM', 'O melhor ajuste de foco.');
-insert into produto (id, nome, versao, preco, data_criacao, ativo, descricao) values (5, 0, 'Microfone de Lapela', 50.0, current_date, 'NAO', 'Produto massa');
+insert into produto (id, versao, nome,  preco, data_criacao, ativo, descricao) values (1, 0, 'Kindle', 799.0, (SELECT current_date - INTERVAL '1 day'), 'SIM', 'Conheça o novo Kindle, agora com iluminação embutida ajustável, que permite que você leia em ambientes abertos ou fechados, a qualquer hora do dia.');
+insert into produto (id, versao, nome,  preco, data_criacao, ativo, descricao) values (3, 0, 'Câmera GoPro Hero 7', 1400.0, (SELECT current_date - INTERVAL '1 day'), 'SIM', 'Desempenho 2x melhor.');
+insert into produto (id, versao, nome,  preco, data_criacao, ativo, descricao) values (4, 0, 'Câmera Canon 80D', 3500.0, current_date, 'SIM', 'O melhor ajuste de foco.');
+insert into produto (id, versao, nome,  preco, data_criacao, ativo, descricao) values (5, 0, 'Microfone de Lapela', 50.0, current_date, 'NAO', 'Produto massa');
 
 
 --insert into cliente (id, nome, cpf) values (nextval('cliente_id_seq'), 'Thaynara Oliveira','00000000068');
