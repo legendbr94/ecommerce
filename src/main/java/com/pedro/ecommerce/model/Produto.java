@@ -5,6 +5,7 @@ import com.pedro.ecommerce.listener.GenericoListener;
 import com.pedro.ecommerce.model.converter.BooleanToSimNaoConverter;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
@@ -26,9 +27,9 @@ import java.util.List;
 })
 @SqlResultSetMappings({
         @SqlResultSetMapping(name = "produto_loja.Produto",
-                entities = { @EntityResult(entityClass = Produto.class) }),
+                entities = {@EntityResult(entityClass = Produto.class)}),
         @SqlResultSetMapping(name = "ecm_produto.Produto",
-                entities = { @EntityResult(entityClass = Produto.class,
+                entities = {@EntityResult(entityClass = Produto.class,
                         fields = {
                                 @FieldResult(name = "id", column = "prd_id"),
                                 @FieldResult(name = "nome", column = "prd_nome"),
@@ -38,7 +39,7 @@ import java.util.List;
                                 @FieldResult(name = "dataCriacao", column = "prd_data_criacao"),
                                 @FieldResult(name = "dataUltimaAtualizacao",
                                         column = "prd_data_ultima_atualizacao")
-                        }) }),
+                        })}),
         @SqlResultSetMapping(name = "ecm_produto.ProdutoDTO",
                 classes = {
                         @ConstructorResult(targetClass = ProdutoDTO.class,
@@ -52,11 +53,11 @@ import java.util.List;
         @NamedQuery(name = "Produto.listar", query = "select p from Produto p"),
         @NamedQuery(name = "Produto.listarPorCategoria", query = "select p from Produto p where exists (select 1 from Categoria c2 join c2.produtos p2 where p2 = p and c2.id = :categoria)")
 })
-@EntityListeners({ GenericoListener.class })
+@EntityListeners({GenericoListener.class})
 @Entity
 @Table(name = "produto",
-        uniqueConstraints = { @UniqueConstraint(name = "unq_nome_produto", columnNames = { "nome" }) },
-        indexes = { @Index(name = "idx_nome", columnList = "nome") })
+        uniqueConstraints = {@UniqueConstraint(name = "unq_nome_produto", columnNames = {"nome"})},
+        indexes = {@Index(name = "idx_nome", columnList = "nome")})
 public class Produto extends EntidadeBaseInteger {
 
     @PastOrPresent
@@ -72,13 +73,14 @@ public class Produto extends EntidadeBaseInteger {
     @Column(length = 100, nullable = false)
     private String nome;
 
-    @Lob
+    //@Lob
     private String descricao;
 
     @Positive
     private BigDecimal preco;
 
     @Lob
+    @Type(type = "org.hibernate.type.BinaryType")
     private byte[] foto;
 
     @Convert(converter = BooleanToSimNaoConverter.class)
