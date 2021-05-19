@@ -73,7 +73,7 @@ public class Produto extends EntidadeBaseInteger {
     @Column(length = 100, nullable = false)
     private String nome;
 
-    //@Lob
+    @Column(columnDefinition = "TEXT")
     private String descricao;
 
     @Positive
