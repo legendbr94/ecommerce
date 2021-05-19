@@ -22,6 +22,6 @@ public class EntidadeBaseInteger {
     private Integer versao;
 
     //Apenas necessário se for utilizar Multitenant na aplicação
-//    @NotBlank
-//    private String tenant;
+    //@NotBlank
+    //private String tenant;
 }
